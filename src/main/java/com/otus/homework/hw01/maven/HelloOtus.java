@@ -1,4 +1,4 @@
-package hw01_maven;
+package com.otus.homework.hw01.maven;
 
 import com.google.common.base.Objects;
 
