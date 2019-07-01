@@ -1,4 +1,4 @@
-package com.otus.homework.hw02.list;
+package list;
 
 import java.util.*;
 import java.util.function.Consumer;

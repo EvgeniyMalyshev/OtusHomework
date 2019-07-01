@@ -1,7 +1,4 @@
-package com.otus.homework.hw02.list;
-
-
-
+package list;
 import java.util.ArrayList;
 import java.util.List;
 

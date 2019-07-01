@@ -1,4 +1,5 @@
-package com.otus.homework.hw02.list;
+package list;
+
 import java.util.Collections;
 import java.util.List;
 
