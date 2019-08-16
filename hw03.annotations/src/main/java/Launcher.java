@@ -32,11 +32,11 @@ public class Launcher {
                             afterMethod.invoke(testClassObj);
                         }
                     } catch (Exception ex) {
-                        System.out.println("Catch failing test, current failed tests count: " + ++failed);
+                        System.out.println("Catch failing main.test, current failed tests count: " + ++failed);
                         System.out.println(ex.getCause().getMessage());
                     }
                 } catch (Exception ex) {
-                    System.out.println("Catch failing test, current failed tests count: " + ++failed);
+                    System.out.println("Catch failing main.test, current failed tests count: " + ++failed);
                     System.out.println(ex.getCause().getMessage());
                 }
                 if (isPassed) {

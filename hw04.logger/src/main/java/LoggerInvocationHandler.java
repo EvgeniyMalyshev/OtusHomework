@@ -1,3 +1,5 @@
+
+
 import annotation.Log;
 
 import java.lang.reflect.InvocationHandler;
@@ -47,5 +49,6 @@ public class LoggerInvocationHandler implements InvocationHandler {
         }
         method.invoke(originalObj, args);
         return null;
+
     }
 }
