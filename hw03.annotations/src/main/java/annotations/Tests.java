@@ -13,12 +13,12 @@ public class Tests {
 
     @Test
     public void passedTest(){
-        System.out.println("main test passed");
+        System.out.println("main main.test passed");
     }
 
     @Test
     public void faildTest(){
-        System.out.println("main test fail");
+        System.out.println("main main.test fail");
         throw new RuntimeException("Runtime exception");
     }
 

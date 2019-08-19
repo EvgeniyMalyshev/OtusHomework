@@ -1,30 +1,30 @@
-package test.classes;
+package main.classes;
 
 import annotations.After;
 import annotations.Before;
 import annotations.Test;
 
 
-public class TestClass1 {
+public class TestClass2 {
 
     @Before
     public void BeforeTest(){
-        System.out.println("Before test class 1");
+        System.out.println("Before main.test class 2");
     }
 
     @Test
     public void Test(){
-        System.out.println("Test run class 1");
+        System.out.println("Test run class 2");
     }
 
     @Test
     public void  WrongTest(){
-        System.out.println("Something wrong in class 1!");
+        System.out.println("Something wrong in class 2!");
         throw new RuntimeException("Test class 1 is falling");
     }
 
     @After
     public void AfterTest(){
-        System.out.println("After test class 1");
+        System.out.println("After main.test class 2");
     }
 }
