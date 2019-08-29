@@ -10,6 +10,7 @@
         <module>hw04.logger</module>
         <module>hw05.gc</module>
         <module>hw06.module</module>
+        <module>hw07.module.master</module>
     </modules>
 
     <properties>
