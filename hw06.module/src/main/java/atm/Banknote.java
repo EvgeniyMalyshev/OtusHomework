@@ -1,7 +1,7 @@
 package atm;
 
 
-public class Banknote {
+public final class Banknote {
 
     private int nominal;
 

@@ -1,33 +1,13 @@
 package atm;
 
-public class Cassette {
+public interface Cassette {
+    int getNominal();
 
-    private Banknote banknote;
-    private int countBanknote = 0;
+    int getCountNote();
 
-    public Cassette(Banknote banknote, int countBanknote) {
-        this.banknote = banknote;
-        this.countBanknote = countBanknote;
-    }
+    void addNote(int countAddBanknote);
 
-    int getNominal() {
-        return banknote.getNominal();
-    }
+    void removeNote(int countRemoveBanknote);
 
-    int getCountNote() {
-        return countBanknote;
-    }
-
-    void addNote(int countAddBanknote) {
-        countBanknote += countAddBanknote;
-    }
-
-    void removeNote(int countRemoveBanknote) {
-        countBanknote -= countRemoveBanknote;
-    }
-
-    int getBalance() {
-        return banknote.getNominal() * countBanknote;
-    }
-
+    int getBalance();
 }

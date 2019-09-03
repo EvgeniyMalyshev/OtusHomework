@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 
 public class ATM {
-    String [] $;
-
 
     private List<Cassette> cassettes = new ArrayList<Cassette>();
     private CashOutBehavior cashOutBehavior;
@@ -70,21 +68,26 @@ public class ATM {
 
     public int getBalanceAtm() {
         if (cassettes.isEmpty()) return 0;
-        return cassettes.stream().map(Cassette::getBalance).reduce((x, y) -> x + y).orElse(0);
+        return cassettes.stream()
+                .map(Cassette::getBalance)
+                .reduce((x, y) -> x + y)
+                .orElse(0);
     }
 
     public String getDetailBalance() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         if (!cassettes.isEmpty()) {
             for (Cassette cassette : cassettes) {
-                result += "Кассета с номиналом " + cassette.getNominal()
-                        + ": количество банкнот = " + cassette.getCountNote()
-                        + ", остаток кассеты = " + cassette.getBalance()
-                        + "\n";
+                result.append("Кассета с номиналом ")
+                        .append(cassette.getNominal())
+                        .append(": количество банкнот = ")
+                        .append(cassette.getCountNote())
+                        .append(", остаток кассеты = ")
+                        .append(cassette.getBalance()).append("\n");
             }
         }
-        result += "Общий остаток " + getBalanceAtm();
-        return result;
+        result.append("Общий остаток ").append(getBalanceAtm());
+        return result.toString();
     }
 
 }
