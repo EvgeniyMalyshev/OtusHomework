@@ -30,6 +30,10 @@ public class AtTest {
         Assert.assertEquals(89500, realATM.getBalanceAtm());
         System.out.println(realATM.getDetailBalance());
 
+        realATM.cashIn(500, -3);
+        Assert.assertEquals(89500, realATM.getBalanceAtm());
+        System.out.println(realATM.getDetailBalance());
+
 
         realATM.cashOut(1000);
         Assert.assertEquals(88500, realATM.getBalanceAtm());

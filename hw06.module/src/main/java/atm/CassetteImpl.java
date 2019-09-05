@@ -3,11 +3,16 @@ package atm;
 public class CassetteImpl implements Cassette {
 
     private Banknote banknote;
-    private int countBanknote = 0;
+    private int countBanknote;
 
     public CassetteImpl(Banknote banknote, int countBanknote) {
         this.banknote = banknote;
-        this.countBanknote = countBanknote;
+        if (countBanknote>0){
+            this.countBanknote = countBanknote;
+        } else {
+            this.countBanknote = 0;
+        }
+
     }
 
     @Override
@@ -22,7 +27,9 @@ public class CassetteImpl implements Cassette {
 
     @Override
     public void addNote(int countAddBanknote) {
-        countBanknote += countAddBanknote;
+        if (countAddBanknote>0){
+            countBanknote += countAddBanknote;
+        }
     }
 
     @Override
