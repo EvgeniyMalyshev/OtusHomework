@@ -56,10 +56,16 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-main.test</artifactId>
+            <version>5.1.8.RELEASE</version>
+            <scope>main.test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>5.1.8.RELEASE</version>
         </dependency>
-        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
