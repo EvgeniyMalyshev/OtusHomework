@@ -19,7 +19,7 @@ public class ATMImpl extends AbstractATM {
         if(!isWorkAtm())return;
         System.out.println("Запросили сумму " + summ);
         int finalSumm;
-        if(banknote.getCurrency().equals(Currency.RUB) || banknote.getCurrency() == Currency.NIS){
+        if(banknote.getCurrency().equals(Currency.RUB)){
             finalSumm = new ComissionForOverSumm(new DefaultChanger(summ)).getFinalSumm();
         } else {
             finalSumm = new ComissionForNotRub(new DefaultChanger(summ)).getFinalSumm();

@@ -8,6 +8,6 @@ public class ComissionForOverSumm extends ComissionChanger {
     @Override
     public int getFinalSumm() {
         System.out.println("Расчёт суммы с комиссией за превышение порога выдачи");
-        return changer.getFinalSumm() > 500 ? changer.getFinalSumm()-100 : changer.getFinalSumm();
+        return changer.getFinalSumm() > 200 ? changer.getFinalSumm()-100 : changer.getFinalSumm();
     }
 }

@@ -9,6 +9,6 @@ public class ComissionForNotRub extends ComissionChanger {
     @Override
     public int getFinalSumm() {
         System.out.println("Расчёт суммы с комиссией за выдачу в иностранной валюте");
-        return changer.getFinalSumm() >= 100 ? changer.getFinalSumm()-50 : changer.getFinalSumm();
+        return changer.getFinalSumm() >= 200 ? changer.getFinalSumm()-100 : changer.getFinalSumm();
     }
 }

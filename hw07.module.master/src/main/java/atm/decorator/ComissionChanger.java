@@ -1,11 +1,11 @@
 package atm.decorator;
 
 
-public abstract class ComissionChanger implements ChangerSummOperation {
+abstract class ComissionChanger implements ChangerSummOperation {
 
-    protected ChangerSummOperation changer;
+    ChangerSummOperation changer;
 
-    public ComissionChanger(ChangerSummOperation changer){
+    ComissionChanger(ChangerSummOperation changer){
         this.changer = changer;
     }
 

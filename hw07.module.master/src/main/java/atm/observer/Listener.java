@@ -2,6 +2,6 @@ package atm.observer;
 
 public interface Listener {
 
-    public void executeDirective(Directives directive);
+    void executeDirective(Directives directive);
 
 }

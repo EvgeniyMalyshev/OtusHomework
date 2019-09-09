@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CashOutBehavior {
 
-    public BundleOfBanknotes getBundleToCashOut(Currency currency, int summ, List<Cassette> cassettes);
+    BundleOfBanknotes getBundleToCashOut(Currency currency, int summ, List<Cassette> cassettes);
 
 }

@@ -60,20 +60,44 @@ public class AtTest {
         department.addATM(atm1);
         department.addATM(atm2);
         department.addATM(atm3);
+        Assert.assertNotNull(department);
 
         System.out.println("Баланс рублей в atm до операций = " + atm1.getBalance(Currency.RUB));
+        Assert.assertEquals("{NIS=600, RUB=1500, USD=800}",atm1.getBalance().toString());
         atm1.cashIn(new BanknoteImpl(Currency.RUB, Nominal.ПОЛТИННИК), 20);
+        Assert.assertEquals("{NIS=600, RUB=2500, USD=800}",atm1.getBalance().toString());
         System.out.println("Баланс рублей в atm после взноса = " + atm1.getBalance(Currency.RUB));
         atm1.cashOut(new BanknoteImpl(Currency.RUB, Nominal.ПОЛТИННИК), 600);
+        Assert.assertEquals("{NIS=600, RUB=2000, USD=800}",atm1.getBalance().toString());
         System.out.println("Баланс рублей в atm после выдачи = " + atm1.getBalance(Currency.RUB));
         atm1.cashOut(new BanknoteImpl(Currency.RUB, Nominal.ПОЛТИННИК), 100);
+        Assert.assertEquals("{NIS=600, RUB=1900, USD=800}",atm1.getBalance().toString());
 
         department.returnToStartState();
         System.out.println("Баланс рублей в atm после сброса = " + atm1.getBalance(Currency.RUB));
+        Assert.assertEquals("{NIS=600, RUB=1500, USD=800}",atm1.getBalance().toString());
 
         System.out.println(department.getBalanceSummary());
-
+        Assert.assertEquals("{NIS=600, RUB=1500, USD=800}",atm1.getBalance().toString());
     }
+
+    @Test
+    public void checkDecorator(){
+        DepartmentOfATM department = new DepartmentOfATM();
+        AbstractATM atm1 = getDefaultATM();
+        department.addATM(atm1);
+        Assert.assertNotNull(department);
+
+        atm1.cashOut(new BanknoteImpl(Currency.RUB, Nominal.ПОЛТИННИК), 200000);
+        Assert.assertEquals("{NIS=600, RUB=1500, USD=800}",atm1.getBalance().toString());
+
+        atm1.cashOut(new BanknoteImpl(Currency.RUB, Nominal.ПОЛТИННИК), 5);
+        Assert.assertEquals("{NIS=600, RUB=1500, USD=800}",atm1.getBalance().toString());
+
+        atm1.cashOut(new BanknoteImpl(Currency.NIS, Nominal.СОТНЯ), 200);
+        Assert.assertEquals("{NIS=500, RUB=1500, USD=800}",atm1.getBalance().toString());
+    }
+
 
     private ATMImpl getDefaultATM(){
 
@@ -82,8 +106,8 @@ public class AtTest {
 
         Cassette cassetteRubSecond = new CassetteImpl(new BanknoteImpl(Currency.RUB, Nominal.СОТНЯ));
 
-        Cassette cassetteEmpire = new CassetteImpl(new BanknoteImpl(Currency.NIS, Nominal.СОТНЯ));
-        cassetteEmpire.addBanknotes(6);
+        Cassette cassetteSheckel = new CassetteImpl(new BanknoteImpl(Currency.NIS, Nominal.СОТНЯ));
+        cassetteSheckel.addBanknotes(6);
 
         Cassette cassetteUsd = new CassetteImpl(new BanknoteImpl(Currency.USD, Nominal.ПОЛТИННИК));
         cassetteUsd.addBanknotes(16);
@@ -93,7 +117,7 @@ public class AtTest {
         atm.setCashOutBehavior(new MinBanknoteBehavior());
         atm.loadCassette(cassetteRub);
         atm.loadCassette(cassetteRubSecond);
-        atm.loadCassette(cassetteEmpire);
+        atm.loadCassette(cassetteSheckel);
         atm.loadCassette(cassetteUsd);
 
         return atm;

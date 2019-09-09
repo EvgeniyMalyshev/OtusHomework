@@ -2,7 +2,7 @@ package atm.observer;
 
 public interface ObserverATM {
 
-    public void addListener(Listener listener);
-    public void notify(Directives directive);
+    void addListener(Listener listener);
+    void notify(Directives directive);
 
 }
