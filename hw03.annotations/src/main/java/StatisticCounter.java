@@ -29,6 +29,7 @@ import static constants.Constants.*;
         statisticMap.entrySet().forEach(entry->{
             System.out.println("All time " + entry.getKey() + " " + entry.getValue());
      });
+        System.out.println("Number of all tests was " + (calculateFailed + calculatePassed));
     }
 }
 

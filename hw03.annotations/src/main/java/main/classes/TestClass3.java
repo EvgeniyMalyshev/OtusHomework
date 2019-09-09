@@ -1,4 +1,4 @@
-package test.classes;
+package main.classes;
 
 import annotations.After;
 import annotations.Before;
@@ -9,7 +9,7 @@ public class TestClass3 {
 
     @Before
     public void BeforeTest(){
-        System.out.println("Before test class 3");
+        System.out.println("Before main.test class 3");
     }
 
     @Test
@@ -25,6 +25,6 @@ public class TestClass3 {
 
     @After
     public void AfterTest(){
-        System.out.println("After test class 3");
+        System.out.println("After main.test class 3");
     }
 }
