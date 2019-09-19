@@ -12,6 +12,7 @@
         <module>hw05.gc</module>
         <module>hw06.module</module>
         <module>hw07.module.master</module>
+        <module>hw08.json</module>
     </modules>
 
     <properties>
@@ -56,13 +57,6 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-main.test</artifactId>
-            <version>5.1.8.RELEASE</version>
-            <scope>main.test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>5.1.8.RELEASE</version>
         </dependency>
@@ -70,6 +64,18 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 </project>
