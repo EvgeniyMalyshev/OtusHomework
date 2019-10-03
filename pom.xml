@@ -13,10 +13,12 @@
         <module>hw06.module</module>
         <module>hw07.module.master</module>
         <module>hw08.json</module>
+        <module>hw09.orm</module>
     </modules>
 
     <properties>
         <java.version>10</java.version>
+        <lombok.version>1.18.8</lombok.version>
     </properties>
 
     <groupId>com.otus.homework</groupId>
@@ -77,5 +79,20 @@
             <artifactId>javax.json</artifactId>
             <version>1.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-swing-junit-4.3.1</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
     </dependencies>
 </project>

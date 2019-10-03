@@ -1,3 +1,5 @@
+package java;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,8 +12,7 @@ public class ParseObject {
     private static final String CONST = "testString";
 
 
-    public ParseObject(int number, String name, boolean aBoolean, List<MockObject> mockObjects,
-                     long[] arrLong) {
+    public ParseObject(int number, String name, boolean aBoolean, List<MockObject> mockObjects,long[] arrLong) {
         this.number = number;
         this.name = name;
         this.aBoolean = aBoolean;
