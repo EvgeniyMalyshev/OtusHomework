@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hw07.module.master</artifactId>
+    <artifactId>hw11.cash.engine</artifactId>
+
 
 </project>
