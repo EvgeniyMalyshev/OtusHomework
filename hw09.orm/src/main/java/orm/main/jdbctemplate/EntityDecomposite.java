@@ -1,7 +1,7 @@
-package jdbctemplate;
+package orm.main.jdbctemplate;
 
 
-import annotations.Id;
+import orm.main.annotation.Id;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

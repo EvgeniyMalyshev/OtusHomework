@@ -1,7 +1,7 @@
-package entity;
+package orm.main.entity;
 
 
-import annotations.Id;
+import orm.main.annotation.Id;
 
 public class User {
 

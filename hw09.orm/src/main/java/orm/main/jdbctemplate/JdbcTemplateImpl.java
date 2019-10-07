@@ -1,4 +1,4 @@
-package jdbctemplate;
+package orm.main.jdbctemplate;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;

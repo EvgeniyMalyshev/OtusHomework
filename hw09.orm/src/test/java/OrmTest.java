@@ -1,8 +1,8 @@
-import entity.Account;
-import entity.User;
-import jdbctemplate.JdbcTemplateImpl;
 import org.junit.Assert;
 import org.junit.Test;
+import orm.main.entity.Account;
+import orm.main.entity.User;
+import orm.main.jdbctemplate.JdbcTemplateImpl;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

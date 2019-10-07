@@ -1,10 +1,8 @@
-package entity;
+package orm.main.entity;
 
-
-import annotations.Id;
+import orm.main.annotation.Id;
 
 import java.math.BigDecimal;
-
 
 public class Account {
 
@@ -32,7 +30,7 @@ public class Account {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "AccountRow [" +
                 "no=" + no + " | " +
                 "type=" + (type == null ? "null" : type) + " | " +

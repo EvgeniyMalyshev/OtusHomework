@@ -1,4 +1,4 @@
-package jdbctemplate;
+package orm.main.jdbctemplate;
 
 import java.sql.SQLException;
 
