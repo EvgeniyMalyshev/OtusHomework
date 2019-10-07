@@ -1,3 +1,5 @@
+package java;
+
 import javax.json.*;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -7,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Collections;
 
-class JsonParser {
+public class JsonParser {
 
     public static String objectToJsonString(Object object) {
         if (object == null) return "null";
