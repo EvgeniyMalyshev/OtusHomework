@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hw11.cash.engine</artifactId>
+    <artifactId>hw11.cacheEngine</artifactId>
 
 
 </project>
