@@ -1,8 +1,8 @@
-import entity.Address;
-import entity.Phone;
-import entity.User;
-import jdbctemplate.DaoTemplate;
-import jdbctemplate.DaoTemplateImpl;
+import otus.entity.Address;
+import otus.entity.Phone;
+import otus.entity.User;
+import otus.jdbctemplate.DaoTemplate;
+import otus.jdbctemplate.DaoTemplateImpl;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;

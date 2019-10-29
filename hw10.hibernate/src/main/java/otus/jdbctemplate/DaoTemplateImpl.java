@@ -1,4 +1,4 @@
-package jdbctemplate;
+package otus.jdbctemplate;
 
 
 import org.hibernate.Session;

@@ -1,4 +1,4 @@
-package entity;
+package otus.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -12,19 +12,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name = "address")
+@Table(name = "phone")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Address {
+public class Phone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    @Column(name = "street", length = 150, nullable = false)
-    private String street;
+    @Column(name = "number", length = 20, nullable = false)
+    private String number;
 
 }
