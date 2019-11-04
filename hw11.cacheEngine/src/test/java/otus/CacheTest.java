@@ -7,9 +7,14 @@ import org.slf4j.LoggerFactory;
 import otus.cache.CacheEngine;
 import otus.cache.CacheEngineImp;
 import otus.cache.MyElement;
+import otus.cache.SlowDataSrc;
+
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 public class CacheTest {
     private static Logger log = LoggerFactory.getLogger(CacheTest.class);
+
     @Test
     public void eternalCacheTest()
     {
@@ -63,5 +68,27 @@ public class CacheTest {
 
         cache.dispose();
     }
+
+    @Test
+    public void workSpeedTest(){
+        int size = 5;
+        CacheEngine<Integer, String> cache = new CacheEngineImp<>(size, 0, 0, false);
+
+        for (int i = 0; i < 10; i++) {
+            cache.put(new MyElement<>(i, "String: " + i));
+        }
+        Assert.assertNotNull(cache);
+
+        for (int i = 0; i < 10; i++) {
+            MyElement<Integer, String> element = cache.get(i);
+            if(element == null){ SlowDataSrc.getValue(i); }
+
+            log.info("String for " + i + ": " + (element != null ? element.getValue() : "null"));
+        }
+
+
+    }
+
+
 
 }
