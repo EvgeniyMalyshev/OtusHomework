@@ -28,11 +28,12 @@ public class CacheTest {
 
         for (int i = 0; i < 10; i++) {
             MyElement<Integer, String> element = cache.get(i);
-            log.info("String for " + i + ": " + (element != null ? element.getValue() : "null"));
+            log.info("String for {} : {}", i, (element != null ? element.getValue() : "null"));
         }
 
-        log.info("Cache hits: " + cache.getHitCount());
-        log.info("Cache misses: " + cache.getMissCount());
+        log.info("Cache hits: {}", cache.getHitCount());
+        log.info("Cache misses: {}", cache.getMissCount());
+
 
         cache.dispose();
     }
@@ -50,21 +51,21 @@ public class CacheTest {
 
         for (int i = 0; i < size; i++) {
             MyElement<Integer, String> element = cache.get(i);
-            log.info("String for " + i + ": " + (element != null ? element.getValue() : "null"));
+            log.info("String for {} : {}", i, (element != null ? element.getValue() : "null"));
         }
 
-        log.info("Cache hits: " + cache.getHitCount());
-        log.info("Cache misses: " + cache.getMissCount());
+        log.info("Cache hits: {}", cache.getHitCount());
+        log.info("Cache misses: {}", cache.getMissCount());
 
         Thread.sleep(1000);
 
         for (int i = 0; i < size; i++) {
             MyElement<Integer, String> element = cache.get(i);
-            log.info("String for " + i + ": " + (element != null ? element.getValue() : "null"));
+            log.info("String for {} : {}", i, (element != null ? element.getValue() : "null"));
         }
 
-        log.info("Cache hits: " + cache.getHitCount());
-        log.info("Cache misses: " + cache.getMissCount());
+        log.info("Cache hits: {}", cache.getHitCount());
+        log.info("Cache misses: {}", cache.getMissCount());
 
         cache.dispose();
     }
@@ -83,12 +84,7 @@ public class CacheTest {
             MyElement<Integer, String> element = cache.get(i);
             if(element == null){ SlowDataSrc.getValue(i); }
 
-            log.info("String for " + i + ": " + (element != null ? element.getValue() : "null"));
+            log.info("String for {} : {}", i, (element != null ? element.getValue() : "null"));
         }
-
-
     }
-
-
-
 }
