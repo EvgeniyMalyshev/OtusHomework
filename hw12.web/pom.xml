@@ -21,7 +21,7 @@
 
         <dep.ver.cache-api>1.1.0</dep.ver.cache-api>
         <dep.ver.ehcache>3.5.2</dep.ver.ehcache>
-        <dep.ver.jetty-server>9.4.10.v20180503</dep.ver.jetty-server>
+        <dep.ver.jetty-server>9.4.17.v20190418</dep.ver.jetty-server>
         <dep.ver.jetty-webapp>9.4.10.v20180503</dep.ver.jetty-webapp>
         <dep.ver.freemarker>2.3.28</dep.ver.freemarker>
         <dep.ver.hibernate-core>5.2.17.Final</dep.ver.hibernate-core>
