@@ -16,6 +16,7 @@
         <module>hw09.orm</module>
         <module>hw10.hibernate</module>
         <module>hw11.cacheEngine</module>
+        <module>hw13.ioc</module>
     </modules>
 
     <properties>
