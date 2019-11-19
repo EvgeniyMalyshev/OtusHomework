@@ -77,7 +77,7 @@ public class AdminServlet extends HttpServlet {
             return pageVariables;
         }
         Map<String, Object> pageVariables = new HashMap<>();
-        pageVariables.put("user", userList.get(0).toString());
+        pageVariables.put("user", userList.toString());
         return pageVariables;
     }
 
