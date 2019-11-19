@@ -20,14 +20,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static otus.hw_12.cnf.hibernate.ConfigureHibernate.configureHibernate;
+
 
 public class AdminServlet extends HttpServlet {
     private static final String DEFAULT_USER_NAME = "UNKNOWN";
     private static final String ADMIN_PAGE_TEMPLATE = "admin.html";
     private static final String ADMIN_CREATE_HTML = "admin_create.html";
+    private static final String ADMIN_GET_USERS = "admin_get_users.html";
 
     private final TemplateProcessor templateProcessor;
-
+    private SessionFactory sessionFactory = configureHibernate();
+    private DaoTemplate daoTemplate = new DaoTemplateImpl(sessionFactory);
 
     @SuppressWarnings("WeakerAccess")
     public AdminServlet(TemplateProcessor templateProcessor) {
@@ -42,16 +46,15 @@ public class AdminServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String page;
         if (request.getSession().getAttribute("login") != null && request.getSession().getAttribute("password") != null) {
-            page = templateProcessor.getPage(ADMIN_CREATE_HTML, null);
+            page = getAdminPageTemplate(ADMIN_CREATE_HTML, null);
         } else {
             Map<String, Object> pageVariables = createPageVariablesMap(request);
-            page = templateProcessor.getPage(ADMIN_PAGE_TEMPLATE, pageVariables);
+            page = getAdminPageTemplate(ADMIN_PAGE_TEMPLATE, pageVariables);
         }
 
-        response.setContentType("text/html;charset=utf-8");
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println(page);
+        setResponse(response, page);
     }
+
 
     private static Map<String, Object> createPageVariablesMap(HttpServletRequest request) {
         Map<String, Object> pageVariables = new HashMap<>();
@@ -61,49 +64,49 @@ public class AdminServlet extends HttpServlet {
         pageVariables.put("sessionId", request.getSession().getId());
         pageVariables.put("parameters", request.getParameterMap().toString());
 
-        //let's get login from session
         String login = (String) request.getSession().getAttribute("login");
         pageVariables.put("login", login != null ? login : DEFAULT_USER_NAME);
 
         return pageVariables;
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String name = request.getParameter("user");
-        String phone = request.getParameter("phone");
-        String users = request.getParameter("getUsers");
-        SessionFactory sessionFactory = configureHibernate();
-        DaoTemplate daoTemplate = new DaoTemplateImpl(sessionFactory);
-        if (users!=null){
-            daoTemplate.readAll();
+    private Map<String, Object> createUsersMap(List<User> userList) {
+        if (userList.isEmpty()) {
+            Map<String, Object> pageVariables = new HashMap<>();
+            pageVariables.put("user", "there is no users");
+            return pageVariables;
         }
-        else if (name != null && phone != null) {
-            User user = new User();
-            user.setName(name);
-            Phone phone1 = new Phone();
-            phone1.setNumber(phone);
-            user.setPhones(List.of(phone1));
-            daoTemplate.create(user);
-        }
-        else {
-            response.setStatus(403);
-        }
-
+        Map<String, Object> pageVariables = new HashMap<>();
+        pageVariables.put("user", userList.get(0).toString());
+        return pageVariables;
     }
 
-    private static SessionFactory configureHibernate() {
-        Configuration configuration = new Configuration()
-                .configure("hibernate.cfg.xml");
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        if (request.getParameter("getUsers") != null) {
+            List<User> userList = daoTemplate.readAll();
+            Map<String, Object> pageVariables = createUsersMap(userList);
+            String page = getAdminPageTemplate(ADMIN_GET_USERS, pageVariables);
+            setResponse(response, page);
+        } else {
+            String name = request.getParameterValues("user")[0];
+            if (name != null) {
+                User user = new User();
+                user.setName(name);
+                daoTemplate.create(user);
+                doGet(request, response);
+            } else {
+                response.setStatus(404);
+            }
+        }
+    }
 
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                .applySettings(configuration.getProperties()).build();
+    private String getAdminPageTemplate(String filename, Map<String, Object> data) throws IOException {
+        return templateProcessor.getPage(filename, data);
+    }
 
-        Metadata metadata = new MetadataSources(serviceRegistry)
-                .addAnnotatedClass(User.class)
-                .addAnnotatedClass(Phone.class)
-                .getMetadataBuilder()
-                .build();
-
-        return metadata.buildSessionFactory();
+    private void setResponse(HttpServletResponse response, String page) throws IOException {
+        response.setContentType("text/html;charset=utf-8");
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().println(page);
     }
 }

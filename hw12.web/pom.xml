@@ -22,7 +22,7 @@
         <dep.ver.jetty-server>9.4.10.v20180503</dep.ver.jetty-server>
         <dep.ver.jetty-webapp>9.4.10.v20180503</dep.ver.jetty-webapp>
         <dep.ver.freemarker>2.3.28</dep.ver.freemarker>
-        <dep.ver.hibernate-core>5.2.17.Final</dep.ver.hibernate-core>
+        <dep.ver.hibernate-core>5.4.4.Final</dep.ver.hibernate-core>
         <dep.ver.hibernate-hikaricp>5.2.17.Final</dep.ver.hibernate-hikaricp>
         <dep.ver.slf4j-api>1.7.25</dep.ver.slf4j-api>
         <dep.ver.slf4j-log4j12>1.7.25</dep.ver.slf4j-log4j12>
@@ -82,6 +82,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${dep.ver.slf4j-log4j12}</version>
         </dependency>
+
     </dependencies>
 
 </project>
