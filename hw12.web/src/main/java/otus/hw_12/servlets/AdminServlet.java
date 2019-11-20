@@ -20,18 +20,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static otus.hw_12.Constants.ADMIN_CREATE_HTML;
+import static otus.hw_12.Constants.ADMIN_GET_USERS;
+import static otus.hw_12.Constants.ADMIN_PAGE_TEMPLATE;
+import static otus.hw_12.Constants.DEFAULT_USER_NAME;
+import static otus.hw_12.Constants.ERROR;
+import static otus.hw_12.Constants.LOCALE;
+import static otus.hw_12.Constants.LOGIN;
+import static otus.hw_12.Constants.METHOD;
+import static otus.hw_12.Constants.PARAMETERS;
+import static otus.hw_12.Constants.PASSWORD;
+import static otus.hw_12.Constants.SESSION_ID;
+import static otus.hw_12.Constants.URL;
+import static otus.hw_12.Constants.USER;
+import static otus.hw_12.Constants.UTF_8_TEMPLATE;
 import static otus.hw_12.cnf.hibernate.ConfigureHibernate.configureHibernate;
 
 
 public class AdminServlet extends HttpServlet {
-    private static final String DEFAULT_USER_NAME = "UNKNOWN";
-    private static final String ADMIN_PAGE_TEMPLATE = "admin.html";
-    private static final String ADMIN_CREATE_HTML = "admin_create.html";
-    private static final String ADMIN_GET_USERS = "admin_get_users.html";
 
     private final TemplateProcessor templateProcessor;
-    private SessionFactory sessionFactory = configureHibernate();
-    private DaoTemplate daoTemplate = new DaoTemplateImpl(sessionFactory);
+    private DaoTemplate daoTemplate = new DaoTemplateImpl(configureHibernate());
 
     @SuppressWarnings("WeakerAccess")
     public AdminServlet(TemplateProcessor templateProcessor) {
@@ -43,9 +52,9 @@ public class AdminServlet extends HttpServlet {
         this(new TemplateProcessor());
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String page;
-        if (request.getSession().getAttribute("login") != null && request.getSession().getAttribute("password") != null) {
+        if (request.getSession().getAttribute(LOGIN) != null && request.getSession().getAttribute(PASSWORD) != null) {
             page = getAdminPageTemplate(ADMIN_CREATE_HTML, null);
         } else {
             Map<String, Object> pageVariables = createPageVariablesMap(request);
@@ -58,14 +67,14 @@ public class AdminServlet extends HttpServlet {
 
     private static Map<String, Object> createPageVariablesMap(HttpServletRequest request) {
         Map<String, Object> pageVariables = new HashMap<>();
-        pageVariables.put("method", request.getMethod());
-        pageVariables.put("URL", request.getRequestURL().toString());
-        pageVariables.put("locale", request.getLocale());
-        pageVariables.put("sessionId", request.getSession().getId());
-        pageVariables.put("parameters", request.getParameterMap().toString());
+        pageVariables.put(METHOD, request.getMethod());
+        pageVariables.put(URL, request.getRequestURL().toString());
+        pageVariables.put(LOCALE, request.getLocale());
+        pageVariables.put(SESSION_ID, request.getSession().getId());
+        pageVariables.put(PARAMETERS, request.getParameterMap().toString());
 
-        String login = (String) request.getSession().getAttribute("login");
-        pageVariables.put("login", login != null ? login : DEFAULT_USER_NAME);
+        String login = (String) request.getSession().getAttribute(LOGIN);
+        pageVariables.put(LOGIN, login != null ? login : DEFAULT_USER_NAME);
 
         return pageVariables;
     }
@@ -73,11 +82,11 @@ public class AdminServlet extends HttpServlet {
     private Map<String, Object> createUsersMap(List<User> userList) {
         if (userList.isEmpty()) {
             Map<String, Object> pageVariables = new HashMap<>();
-            pageVariables.put("user", "there is no users");
+            pageVariables.put(USER, "there is no users");
             return pageVariables;
         }
         Map<String, Object> pageVariables = new HashMap<>();
-        pageVariables.put("user", userList.toString());
+        pageVariables.put(USER, userList.toString());
         return pageVariables;
     }
 
@@ -88,14 +97,13 @@ public class AdminServlet extends HttpServlet {
             String page = getAdminPageTemplate(ADMIN_GET_USERS, pageVariables);
             setResponse(response, page);
         } else {
-            String name = request.getParameterValues("user")[0];
+            String name = request.getParameterValues(USER)[0];
             if (name != null) {
-                User user = new User();
-                user.setName(name);
+                User user = new User(name);
                 daoTemplate.create(user);
                 doGet(request, response);
             } else {
-                response.setStatus(404);
+                response.setStatus(Integer.parseInt(ERROR));
             }
         }
     }
@@ -105,7 +113,7 @@ public class AdminServlet extends HttpServlet {
     }
 
     private void setResponse(HttpServletResponse response, String page) throws IOException {
-        response.setContentType("text/html;charset=utf-8");
+        response.setContentType(UTF_8_TEMPLATE);
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println(page);
     }

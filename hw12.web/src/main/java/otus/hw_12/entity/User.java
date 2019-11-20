@@ -34,4 +34,8 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Phone> phones;
+
+    public User(String name) {
+        this.name = name;
+    }
 }

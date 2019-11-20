@@ -10,16 +10,18 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static otus.hw_12.Constants.DEFAULT_ADMIN_PASSWORD;
+import static otus.hw_12.Constants.LOGGED_IN_PAGE_TEMPLATE;
+import static otus.hw_12.Constants.LOGIN;
+import static otus.hw_12.Constants.LOGIN_PAGE_TEMPLATE;
+import static otus.hw_12.Constants.LOGIN_PARAMETER_NAME;
+import static otus.hw_12.Constants.LOGIN_VARIABLE_NAME;
+import static otus.hw_12.Constants.PASSWORD;
+import static otus.hw_12.Constants.PASSWORD_PARAMETER_NAME;
+import static otus.hw_12.Constants.UTF_8_TEMPLATE;
+
 public class LoginServlet extends HttpServlet
 {
-    private static final String LOGIN_PARAMETER_NAME = "login";
-    private static final String DEFAULT_ADMIN_PASSWORD = "1111";
-    private static final String PASSWORD_PARAMETER_NAME = "password";
-
-    private static final String LOGIN_VARIABLE_NAME = "login";
-    private static final String LOGIN_PAGE_TEMPLATE = "login.html";
-    private static final String LOGGED_IN_PAGE_TEMPLATE = "logged_in.html";
-
     private final TemplateProcessor templateProcessor;
     private String login;
 
@@ -63,12 +65,12 @@ public class LoginServlet extends HttpServlet
     }
 
     private void saveToServlet(HttpServletRequest request, String requestLogin) {
-        request.getServletContext().setAttribute("login", requestLogin);
+        request.getServletContext().setAttribute(LOGIN, requestLogin);
     }
 
     private void saveToSession(HttpServletRequest request, String requestLogin, String requestPassword) {
-        request.getSession().setAttribute("login", requestLogin);
-        request.getSession().setAttribute("password", requestPassword);
+        request.getSession().setAttribute(LOGIN, requestLogin);
+        request.getSession().setAttribute(PASSWORD, requestPassword);
     }
 
     private void saveToVariable(String requestLogin)
@@ -77,7 +79,7 @@ public class LoginServlet extends HttpServlet
     }
 
     private void setOK(HttpServletResponse response) {
-        response.setContentType("text/html;charset=utf-8");
+        response.setContentType(UTF_8_TEMPLATE);
         response.setStatus(HttpServletResponse.SC_OK);
     }
 }
