@@ -1,4 +1,4 @@
-package otus.hw_12.cnf.hibernate;
+package otus.hw_12.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

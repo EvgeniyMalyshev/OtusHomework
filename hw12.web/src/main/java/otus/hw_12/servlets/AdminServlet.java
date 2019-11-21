@@ -1,17 +1,8 @@
 package otus.hw_12.servlets;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import otus.hw_12.entity.Phone;
 import otus.hw_12.entity.User;
 import otus.hw_12.jdbctemplate.DaoTemplate;
-import otus.hw_12.jdbctemplate.DaoTemplateImpl;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,41 +11,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static otus.hw_12.Constants.ADMIN_CREATE_HTML;
-import static otus.hw_12.Constants.ADMIN_GET_USERS;
-import static otus.hw_12.Constants.ADMIN_PAGE_TEMPLATE;
-import static otus.hw_12.Constants.DEFAULT_USER_NAME;
-import static otus.hw_12.Constants.ERROR;
-import static otus.hw_12.Constants.LOCALE;
-import static otus.hw_12.Constants.LOGIN;
-import static otus.hw_12.Constants.METHOD;
-import static otus.hw_12.Constants.PARAMETERS;
-import static otus.hw_12.Constants.PASSWORD;
-import static otus.hw_12.Constants.SESSION_ID;
-import static otus.hw_12.Constants.URL;
-import static otus.hw_12.Constants.USER;
-import static otus.hw_12.Constants.UTF_8_TEMPLATE;
-import static otus.hw_12.cnf.hibernate.ConfigureHibernate.configureHibernate;
+import static otus.hw_12.constants.Constants.ADMIN_CREATE_HTML;
+import static otus.hw_12.constants.Constants.ADMIN_GET_USERS;
+import static otus.hw_12.constants.Constants.ADMIN_PAGE_TEMPLATE;
+import static otus.hw_12.constants.Constants.DEFAULT_USER_NAME;
+import static otus.hw_12.constants.Constants.ERROR;
+import static otus.hw_12.constants.Constants.LOCALE;
+import static otus.hw_12.constants.Constants.LOGIN_PARAMETER_NAME;
+import static otus.hw_12.constants.Constants.METHOD;
+import static otus.hw_12.constants.Constants.PARAMETERS;
+import static otus.hw_12.constants.Constants.PASSWORD_PARAMETER_NAME;
+import static otus.hw_12.constants.Constants.SESSION_ID;
+import static otus.hw_12.constants.Constants.USER;
+import static otus.hw_12.constants.Constants.USER_REQUEST_URL;
+import static otus.hw_12.constants.Constants.UTF_8_TEMPLATE;
 
 
 public class AdminServlet extends HttpServlet {
 
     private final TemplateProcessor templateProcessor;
-    private DaoTemplate daoTemplate = new DaoTemplateImpl(configureHibernate());
+    private final DaoTemplate daoTemplate;
 
-    @SuppressWarnings("WeakerAccess")
-    public AdminServlet(TemplateProcessor templateProcessor) {
+    public AdminServlet(TemplateProcessor templateProcessor, DaoTemplate daoTemplate) {
         this.templateProcessor = templateProcessor;
-    }
-
-    @SuppressWarnings("WeakerAccess")
-    public AdminServlet() throws IOException {
-        this(new TemplateProcessor());
+        this.daoTemplate = daoTemplate;
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String page;
-        if (request.getSession().getAttribute(LOGIN) != null && request.getSession().getAttribute(PASSWORD) != null) {
+        if (request.getSession().getAttribute(LOGIN_PARAMETER_NAME) != null && request.getSession().getAttribute(PASSWORD_PARAMETER_NAME) != null) {
             page = getAdminPageTemplate(ADMIN_CREATE_HTML, null);
         } else {
             Map<String, Object> pageVariables = createPageVariablesMap(request);
@@ -68,13 +53,13 @@ public class AdminServlet extends HttpServlet {
     private static Map<String, Object> createPageVariablesMap(HttpServletRequest request) {
         Map<String, Object> pageVariables = new HashMap<>();
         pageVariables.put(METHOD, request.getMethod());
-        pageVariables.put(URL, request.getRequestURL().toString());
+        pageVariables.put(USER_REQUEST_URL, request.getRequestURL().toString());
         pageVariables.put(LOCALE, request.getLocale());
         pageVariables.put(SESSION_ID, request.getSession().getId());
         pageVariables.put(PARAMETERS, request.getParameterMap().toString());
 
-        String login = (String) request.getSession().getAttribute(LOGIN);
-        pageVariables.put(LOGIN, login != null ? login : DEFAULT_USER_NAME);
+        String login = (String) request.getSession().getAttribute(LOGIN_PARAMETER_NAME);
+        pageVariables.put(LOGIN_PARAMETER_NAME, login != null ? login : DEFAULT_USER_NAME);
 
         return pageVariables;
     }
@@ -90,7 +75,7 @@ public class AdminServlet extends HttpServlet {
         return pageVariables;
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (request.getParameter("getUsers") != null) {
             List<User> userList = daoTemplate.readAll();
             Map<String, Object> pageVariables = createUsersMap(userList);

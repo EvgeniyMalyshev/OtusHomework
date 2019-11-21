@@ -1,14 +1,12 @@
-package otus.hw_12;
+package otus.hw_12.constants;
 
 public class Constants {
     public static final String DEFAULT_USER_NAME = "UNKNOWN";
     public static final String ADMIN_PAGE_TEMPLATE = "admin.html";
     public static final String ADMIN_CREATE_HTML = "admin_create.html";
     public static final String ADMIN_GET_USERS = "admin_get_users.html";
-    public static final String LOGIN = "login";
-    public static final String PASSWORD = "password";
     public static final String METHOD= "method";
-    public static final String URL = "URL";
+    public static final String USER_REQUEST_URL = "URL";
     public static final String LOCALE = "locale";
     public static final String SESSION_ID = "sessionId";
     public static final String PARAMETERS = "parameters";
