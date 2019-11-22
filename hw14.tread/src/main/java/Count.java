@@ -2,8 +2,16 @@ class Count {
     private int counter = 0;
     private int number = 0;
 
+    synchronized void putGet(String state) {
+        if (state.equals("put")) {
+            put();
+        } else {
+            get();
+        }
 
-    synchronized void put() {
+    }
+
+    private void put() {
         while (counter > number) {
             try {
                 wait();
@@ -18,7 +26,7 @@ class Count {
 
     }
 
-    synchronized void get() {
+    private void get() {
         while (counter < number) {
             try {
                 wait();
@@ -31,4 +39,5 @@ class Count {
         number++;
         notify();
     }
+
 }
