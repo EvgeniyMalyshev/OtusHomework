@@ -16,12 +16,30 @@
         <module>hw09.orm</module>
         <module>hw10.hibernate</module>
         <module>hw11.cacheEngine</module>
+        <module>hw12.web</module>
+        <module>hw13.ioc</module>
         <module>hw14.tread</module>
     </modules>
-
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
         <java.version>10</java.version>
         <lombok.version>1.18.8</lombok.version>
+
+        <dep.ver.jetty-server>9.4.10.v20180503</dep.ver.jetty-server>
+        <dep.ver.jetty-webapp>9.4.10.v20180503</dep.ver.jetty-webapp>
+        <dep.ver.freemarker>2.3.28</dep.ver.freemarker>
+        <dep.ver.otus.hibernate-core>5.4.4.Final</dep.ver.otus.hibernate-core>
+        <dep.ver.otus.hibernate-hikaricp>5.2.17.Final</dep.ver.otus.hibernate-hikaricp>
+        <dep.ver.slf4j-api>1.7.25</dep.ver.slf4j-api>
+        <dep.ver.slf4j-log4j12>1.7.25</dep.ver.slf4j-log4j12>
+
+        <plg.ver.maven-asembly>3.1.0</plg.ver.maven-asembly>
+        <plg.ver.gmavenplus>1.6</plg.ver.gmavenplus>
+        <plg.ver.maven-surefire>2.20.1</plg.ver.maven-surefire>
     </properties>
 
     <groupId>com.otus.homework</groupId>
