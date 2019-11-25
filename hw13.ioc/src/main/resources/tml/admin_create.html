@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin</title>
+</head>
+<body>
+<div class="top">
+    <br/>
+    <a href="login">Login</a> <a href="admin">Admin</a>
+</div>
+<div class="create_user">
+    <form action="admin" method="POST">
+        username: <input type="text" name="user"/>
+        <input type="submit" value="createUser">
+    </form>
+
+    <form action="admin" method="POST">
+        <input type="submit" name="getUsers" value="getUsers">
+    </form>
+</div>
+</body>
+</html>
