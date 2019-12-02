@@ -6,16 +6,16 @@
 </head>
 <body>
 <div class="top">
-    <br/>
-    <a href="login">Login</a> <a href="admin">Admin</a>
+    <a href="login">Login</a>
 </div>
+<h1>Create user</h1>
 <div class="create_user">
-    <form action="admin" method="POST">
+    <form action="admin_create.html" method="PUT">
         username: <input type="text" name="user"/>
         <input type="submit" value="createUser">
     </form>
 
-    <form action="admin" method="POST">
+    <form action="admin_get_users.html" method="POST">
         <input type="submit" name="getUsers" value="getUsers">
     </form>
 </div>

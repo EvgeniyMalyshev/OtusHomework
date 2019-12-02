@@ -3,40 +3,43 @@ package otus.hibernate;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import otus.config.IocConfig;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@Import(IocConfig.class)
-public class DbConfig {
+@ComponentScan("otus")
+@EnableJpaRepositories(basePackages = "otus.repository")
+@PropertySource("classpath:hibernate.properties")
+public class DbConfiguration {
 
     private static final String PROP_HIBERNATE_DIALECT = "hibernate.dialect";
     private static final String PROP_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
     private static final String PROP_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
-    private static final String[] PACKAGES_TO_SCAN = {"otus"};
+    private static final String[] PACKAGES_TO_SCAN = {"otus.entity"};
 
     @Value("${jdbc.driver}")
     private String driver;
-    @Value("{jdbc.url}")
+    @Value("${jdbc.url}")
     private String url;
-    @Value("{jdbc.username}")
+    @Value("${jdbc.username}")
     private String username;
-    @Value("{jdbc.password}")
+    @Value("${jdbc.password}")
     private String password;
-    @Value("{hibernate.dialect}")
+    @Value("${hibernate.dialect}")
     private String dialect;
-    @Value("{hibernate.show_sql}")
+    @Value("${hibernate.show_sql}")
     private String showSql;
-    @Value("{hibernate.hbm2ddl.auto}")
+    @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddl;
 
     @Bean
@@ -53,9 +56,9 @@ public class DbConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        localContainerEntityManagerFactoryBean.setPackagesToScan(PACKAGES_TO_SCAN);
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());
         localContainerEntityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        localContainerEntityManagerFactoryBean.setPackagesToScan(PACKAGES_TO_SCAN);
         localContainerEntityManagerFactoryBean.setJpaProperties(getHibernateProperties());
         return localContainerEntityManagerFactoryBean;
     }
