@@ -8,10 +8,8 @@ import otus.service.UserService;
 @Configuration
 public class SpringConfiguration {
 
-    private UserRepository userRepository;
-
     @Bean
-    public UserService userService() {
+    public UserService userService(UserRepository userRepository) {
         return new UserService(userRepository);
     }
 }
