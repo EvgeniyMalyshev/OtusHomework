@@ -1,4 +1,4 @@
-/*
+
 package test;
 
 import org.junit.Assert;
@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import otus.entity.User;
 import otus.hibernate.DbConfiguration;
+import otus.service.UserService;
+
 //import otus.repository.UserRepository;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = DbConfiguration.class)
@@ -16,17 +17,17 @@ import otus.hibernate.DbConfiguration;
 
 public class Test {
 
-   */
-/* @Autowired
-    UserRepository userRepository;
+
+    @Autowired
+    UserService userService;
 
     @org.junit.Test
     public void repositoryTest(){
-        User user = new User(1,"name",null);
-        userRepository.save(user);
-        Assert.assertNotNull(userRepository.findAll());
 
-    }*//*
+        userService.setUsers("user");
+        Assert.assertNotNull(userService.getUsers());
+
+    }
 
 }
-*/
+
