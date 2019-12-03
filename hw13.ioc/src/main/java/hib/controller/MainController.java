@@ -6,11 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @Slf4j
@@ -23,7 +24,7 @@ public class MainController {
         return new ModelAndView("login");
     }
 
-    @RequestMapping(value = "/admin_create", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin_create", method = POST)
     public ModelAndView logged(@RequestParam("login") String login, @RequestParam("password") String password) {
 
         if (login.equals("user") && password.equals("user")) {
