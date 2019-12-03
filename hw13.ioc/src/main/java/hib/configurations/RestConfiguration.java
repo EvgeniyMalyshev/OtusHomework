@@ -2,6 +2,7 @@
 package hib.configurations;
 
 
+
 import hib.controller.MainController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 
 @Configuration
@@ -20,11 +22,20 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableJpaRepositories(basePackages = "hib")
 @Slf4j
 public class RestConfiguration implements WebMvcConfigurer {
-    @Bean
+   /* @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("WEB-INF/static/");
         viewResolver.setSuffix(".html");
+        return viewResolver;
+    }*/
+
+    @Bean
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setViewClass(JstlView.class);
+        viewResolver.setPrefix("WEB-INF/views/");
+        viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
 

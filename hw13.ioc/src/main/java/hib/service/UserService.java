@@ -27,9 +27,10 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void setUser(String name) {
+    public User setUser(String name) {
         User user = new User(name);
         userRepository.save(user);
+        return user;
     }
 
 }
