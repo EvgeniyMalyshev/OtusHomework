@@ -22,6 +22,8 @@ public class MainController {
 
     @RequestMapping("/")
     public ModelAndView login() {
+        /*здесь создается юзер-администратор. Планировалось, что он будет создаваться
+                через @Commit при тестах, но не срабатывает с H2*/
         userService.setUsersWithPass("user", "user");
         return new ModelAndView("login");
     }
