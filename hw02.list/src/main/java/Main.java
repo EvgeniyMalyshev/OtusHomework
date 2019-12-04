@@ -1,4 +1,4 @@
-import main.DIYarrayList;
+import otus.main.DIYarrayList;
 
 
 import java.util.ArrayList;

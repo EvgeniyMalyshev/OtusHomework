@@ -1,6 +1,7 @@
 package annotations;
 
 
+import annotation.Test;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,12 +14,12 @@ public class Tests {
 
     @Test
     public void passedTest(){
-        System.out.println("main main.test passed");
+        System.out.println("otus.main otus.main.test passed");
     }
 
     @Test
     public void faildTest(){
-        System.out.println("main main.test fail");
+        System.out.println("otus.main otus.main.test fail");
         throw new RuntimeException("Runtime exception");
     }
 

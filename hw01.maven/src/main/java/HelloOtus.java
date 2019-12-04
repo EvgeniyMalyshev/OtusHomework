@@ -1,4 +1,4 @@
-package main.java;
+package otus.main.java;
 
 import com.google.common.base.Objects;
 

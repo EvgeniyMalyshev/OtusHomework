@@ -12,11 +12,7 @@
     <artifactId>hw06.module</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.1</version>
-        </dependency>
+
     </dependencies>
 
 </project>

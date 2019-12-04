@@ -1,4 +1,4 @@
-package main;
+package otus.main;
 
 import java.util.*;
 import java.util.function.Consumer;

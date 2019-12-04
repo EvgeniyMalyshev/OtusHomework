@@ -1,6 +1,6 @@
 import annotations.After;
 import annotations.Before;
-import annotations.Test;
+import annotation.Test;
 import java.lang.reflect.Method;
 import java.util.*;
 import static constants.Constants.*;

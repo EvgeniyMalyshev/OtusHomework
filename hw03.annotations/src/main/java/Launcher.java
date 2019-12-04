@@ -5,13 +5,15 @@ import static constants.Constants.*;
 
 public class Launcher {
     @Autowired
+    static
     TestAnnotationsCalculate calculate;
     @Autowired
+    static
     StatisticCounter statisticCounter;
 
 
      @SuppressWarnings("unchecked")
-         void run(Class cls) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+     static void run(Class cls) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
 
             var passed = 0;
             var failed = 0;
@@ -32,11 +34,11 @@ public class Launcher {
                             afterMethod.invoke(testClassObj);
                         }
                     } catch (Exception ex) {
-                        System.out.println("Catch failing main.test, current failed tests count: " + ++failed);
+                        System.out.println("Catch failing otus.main.test, current failed tests count: " + ++failed);
                         System.out.println(ex.getCause().getMessage());
                     }
                 } catch (Exception ex) {
-                    System.out.println("Catch failing main.test, current failed tests count: " + ++failed);
+                    System.out.println("Catch failing otus.main.test, current failed tests count: " + ++failed);
                     System.out.println(ex.getCause().getMessage());
                 }
                 if (isPassed) {

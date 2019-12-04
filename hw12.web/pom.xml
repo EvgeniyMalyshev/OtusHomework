@@ -56,6 +56,7 @@
             <artifactId>jetty-webapp</artifactId>
             <version>${dep.ver.jetty-webapp}</version>
         </dependency>
+
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>

@@ -1,4 +1,4 @@
-package otus.hw_12.servlets;
+package otus.hw_13.servlets;
 
 
 import javax.servlet.ServletException;
@@ -10,13 +10,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static otus.hw_12.constants.Constants.DEFAULT_ADMIN_PASSWORD;
-import static otus.hw_12.constants.Constants.LOGGED_IN_PAGE_TEMPLATE;
-import static otus.hw_12.constants.Constants.LOGIN_PAGE_TEMPLATE;
-import static otus.hw_12.constants.Constants.LOGIN_PARAMETER_NAME;
-import static otus.hw_12.constants.Constants.LOGIN_VARIABLE_NAME;
-import static otus.hw_12.constants.Constants.PASSWORD_PARAMETER_NAME;
-import static otus.hw_12.constants.Constants.UTF_8_TEMPLATE;
+import static otus.hw_13.constants.Constants.DEFAULT_ADMIN_PASSWORD;
+import static otus.hw_13.constants.Constants.LOGGED_IN_PAGE_TEMPLATE;
+import static otus.hw_13.constants.Constants.LOGIN_PAGE_TEMPLATE;
+import static otus.hw_13.constants.Constants.LOGIN_PARAMETER_NAME;
+import static otus.hw_13.constants.Constants.LOGIN_VARIABLE_NAME;
+import static otus.hw_13.constants.Constants.PASSWORD_PARAMETER_NAME;
+import static otus.hw_13.constants.Constants.UTF_8_TEMPLATE;
 
 public class LoginServlet extends HttpServlet
 {

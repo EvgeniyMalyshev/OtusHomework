@@ -1,15 +1,15 @@
-package main.classes;
+package otus.main.classes;
 
 import annotations.After;
 import annotations.Before;
-import annotations.Test;
+import annotation.Test;
 
 
 public class TestClass3 {
 
     @Before
     public void BeforeTest(){
-        System.out.println("Before main.test class 3");
+        System.out.println("Before otus.main.test class 3");
     }
 
     @Test
@@ -25,6 +25,6 @@ public class TestClass3 {
 
     @After
     public void AfterTest(){
-        System.out.println("After main.test class 3");
+        System.out.println("After otus.main.test class 3");
     }
 }

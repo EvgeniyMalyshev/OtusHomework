@@ -3,9 +3,9 @@ import org.junit.runner.RunWith;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import main.classes.TestClass1;
-import main.classes.TestClass2;
-import main.classes.TestClass3;
+import otus.main.classes.TestClass1;
+import otus.main.classes.TestClass2;
+import otus.main.classes.TestClass3;
 
 import java.lang.reflect.InvocationTargetException;
 
