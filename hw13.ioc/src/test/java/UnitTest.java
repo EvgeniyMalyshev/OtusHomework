@@ -23,9 +23,9 @@ public class UnitTest {
 
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Test
     @Commit

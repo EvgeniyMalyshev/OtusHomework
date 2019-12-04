@@ -3,7 +3,6 @@ package hib.configurations;
 
 
 import hib.controller.MainController;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "hib")
-@Slf4j
 public class RestConfiguration implements WebMvcConfigurer {
     @Bean
     public InternalResourceViewResolver viewResolver() {
