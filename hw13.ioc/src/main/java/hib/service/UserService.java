@@ -24,13 +24,12 @@ public class UserService {
 
     public void setUsersWithPass(String name, String password) {
         User user = new User(name, password);
-        userRepository.save(user);
+        userRepository.saveAndFlush(user);
     }
 
-    public User setUser(String name) {
+    public void setUser(String name) {
         User user = new User(name);
-        userRepository.save(user);
-        return user;
+        userRepository.saveAndFlush(user);
     }
 
 }
