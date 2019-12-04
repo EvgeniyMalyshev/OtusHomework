@@ -11,4 +11,6 @@
 
     <artifactId>hw09.orm</artifactId>
 
+    <dependencies>
+    </dependencies>
 </project>

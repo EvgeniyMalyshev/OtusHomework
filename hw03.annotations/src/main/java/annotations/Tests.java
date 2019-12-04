@@ -1,7 +1,6 @@
 package annotations;
 
 
-import annotation.Test;
 import org.springframework.stereotype.Service;
 
 @Service

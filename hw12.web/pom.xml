@@ -22,30 +22,9 @@
         <dep.ver.jetty-server>9.4.10.v20180503</dep.ver.jetty-server>
         <dep.ver.jetty-webapp>9.4.10.v20180503</dep.ver.jetty-webapp>
         <dep.ver.freemarker>2.3.28</dep.ver.freemarker>
-        <dep.ver.hibernate-core>5.4.4.Final</dep.ver.hibernate-core>
-        <dep.ver.hibernate-hikaricp>5.2.17.Final</dep.ver.hibernate-hikaricp>
-        <dep.ver.slf4j-api>1.7.25</dep.ver.slf4j-api>
-        <dep.ver.slf4j-log4j12>1.7.25</dep.ver.slf4j-log4j12>
-
-        <plg.ver.maven-asembly>3.1.0</plg.ver.maven-asembly>
-        <plg.ver.gmavenplus>1.6</plg.ver.gmavenplus>
-        <plg.ver.maven-surefire>2.20.1</plg.ver.maven-surefire>
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.199</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
@@ -62,28 +41,6 @@
             <artifactId>freemarker</artifactId>
             <version>${dep.ver.freemarker}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${dep.ver.hibernate-core}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-hikaricp</artifactId>
-            <version>${dep.ver.hibernate-hikaricp}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${dep.ver.slf4j-api}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${dep.ver.slf4j-log4j12}</version>
-        </dependency>
-
     </dependencies>
 
 </project>

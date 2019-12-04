@@ -2,7 +2,7 @@ package otus.main.classes;
 
 import annotations.After;
 import annotations.Before;
-import annotation.Test;
+import annotations.Test;
 
 
 public class TestClass3 {
