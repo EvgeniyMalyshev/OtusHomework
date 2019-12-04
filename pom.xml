@@ -25,20 +25,17 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <java.version>10</java.version>
-        <lombok.version>1.18.8</lombok.version>
-
-        <dep.ver.jetty-server>9.4.10.v20180503</dep.ver.jetty-server>
-        <dep.ver.jetty-webapp>9.4.10.v20180503</dep.ver.jetty-webapp>
-        <dep.ver.freemarker>2.3.28</dep.ver.freemarker>
-        <dep.ver.otus.hibernate-core>5.4.4.Final</dep.ver.otus.hibernate-core>
-        <dep.ver.otus.hibernate-hikaricp>5.2.17.Final</dep.ver.otus.hibernate-hikaricp>
-        <dep.ver.slf4j-api>1.7.25</dep.ver.slf4j-api>
-        <dep.ver.slf4j-log4j12>1.7.25</dep.ver.slf4j-log4j12>
-
+        <java.version>11</java.version>
+        <lombok.version>1.18.10</lombok.version>
         <plg.ver.maven-asembly>3.1.0</plg.ver.maven-asembly>
         <plg.ver.gmavenplus>1.6</plg.ver.gmavenplus>
         <plg.ver.maven-surefire>2.20.1</plg.ver.maven-surefire>
+        <spring.version>5.1.5.RELEASE</spring.version>
+        <spring.data>2.1.5.RELEASE</spring.data>
+        <javax.servlet>4.0.1</javax.servlet>
+        <junit>4.12</junit>
+        <h2version>1.4.199</h2version>
+        <hibernate.version>5.4.1.Final</hibernate.version>
     </properties>
 
     <groupId>com.otus.homework</groupId>
@@ -48,11 +45,8 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>10</source>
-                    <target>10</target>
-                </configuration>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
             </plugin>
         </plugins>
     </build>
@@ -66,33 +60,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>5.1.8.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.1.8.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>5.1.8.RELEASE</version>
-        </dependency>
-
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
-            <version>1.1</version>
+            <version>${junit}</version>
         </dependency>
 
         <dependency>
@@ -109,10 +79,66 @@
             <optional>true</optional>
         </dependency>
 
+
+
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-swing-junit-4.3.1</artifactId>
-            <version>1.2.0</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+             <groupId>org.springframework</groupId>
+             <artifactId>spring-context</artifactId>
+             <version>${spring.version}</version>
+         </dependency>
+         <dependency>
+             <groupId>org.springframework</groupId>
+             <artifactId>spring-context-support</artifactId>
+             <version>${spring.version}</version>
+         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2version}</version>
         </dependency>
 
         <dependency>
