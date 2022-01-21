@@ -35,7 +35,7 @@
         <spring.data>2.1.9.RELEASE</spring.data>
         <javax.servlet>4.0.1</javax.servlet>
         <junit>4.12</junit>
-        <h2version>1.4.199</h2version>
+        <h2version>2.1.210</h2version>
         <hibernate.version>5.4.1.Final</hibernate.version>
     </properties>
 
@@ -145,7 +145,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.199</version>
+            <version>2.1.210</version>
         </dependency>
 
     </dependencies>
