@@ -31,7 +31,7 @@
         <plg.ver.maven-asembly>3.1.0</plg.ver.maven-asembly>
         <plg.ver.gmavenplus>1.6</plg.ver.gmavenplus>
         <plg.ver.maven-surefire>2.20.1</plg.ver.maven-surefire>
-        <spring.version>5.1.5.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <spring.data>2.1.9.RELEASE</spring.data>
         <javax.servlet>4.0.1</javax.servlet>
         <junit>4.12</junit>
