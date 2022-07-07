@@ -19,7 +19,7 @@
 
         <main.class>com.otus.hw_12.main.Main</main.class>
 
-        <dep.ver.jetty-server>9.4.10.v20180503</dep.ver.jetty-server>
+        <dep.ver.jetty-server>10.0.10</dep.ver.jetty-server>
         <dep.ver.jetty-webapp>9.4.10.v20180503</dep.ver.jetty-webapp>
         <dep.ver.freemarker>2.3.28</dep.ver.freemarker>
     </properties>
